@@ -45,6 +45,38 @@ import com.raywenderlich.android.simplenote.databinding.ActivityMainBinding
  */
 class MainActivity : AppCompatActivity() {
 
+  // lazy initialization means that the property is initialized when it is first used in the code
+  // and not before. This is useful when the initialization of the property is computationally
+  // expensive and you want to avoid the overhead of initializing it until it is actually needed.
+
+  // Repository design pattern is used to separate the logic of the application from the data source.
+    // The repository is responsible for handling the data operations and provides a clean API to
+  // the rest of the application. The repository pattern is used to decouple the logic of the
+  // application from the data source. This allows the application to access the data from the
+  // repository without knowing the source of the data.
+
+  // Types of storage:
+  // 1. Internal Storage: Internal storage is the storage that is available only to the application
+  // and is not accessible to the user. Cleans up when the application is uninstalled.
+
+  // 2. External Storage: External storage is the storage that is available to the user and can be
+  // accessed by the user. Remains even after the application is uninstalled. Need permission to
+  // access. although without permission, the app can still read and write to its own directory.
+
+  // 3. Emulated External Storage: Emulated external storage is the storage that is available to the
+  // user and can be accessed by the user. It is a part of the internal storage that is made to
+  // look like external storage. Remains even after the application is uninstalled. Need permission
+    // to access. although without permission, the app can still read and write to its own directory.
+
+  // 4. Adopted external storage: Adopted external storage is making external storage behave like
+  // internal storage. It is encrypted and formatted to work with the device.
+
+  // 5. Scoped Storage: Scoped storage is a new way of managing storage on Android. It is a way to
+    // provide a more secure and privacy-friendly way to access and store data on the device.
+
+  // Refer this article for more information: https://tdcolvin.medium.com/demystifying-internal-vs-external-storage-in-modern-android-c9c31cb8eeec
+  
+
   private val repo: NoteRepository by lazy { InternalFileRepository(this) }
   private lateinit var binding: ActivityMainBinding
 
